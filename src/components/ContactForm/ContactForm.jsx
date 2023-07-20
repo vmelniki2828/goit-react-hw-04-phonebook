@@ -32,6 +32,7 @@ const ContactForm = ({addContact}) => {
         break;
       default:
         break;
+    }
   };
 
 
@@ -70,7 +71,6 @@ const ContactForm = ({addContact}) => {
       </button>
     </form>
   );
-  }
 };
 
 export default ContactForm
