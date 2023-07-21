@@ -7,9 +7,9 @@ import Filter from './Filter/Filter';
 export const App = () => {
 
   const getContact = () => {
-    const dataParsed = localStorage.getItem('phonebook');
-    if (dataParsed) {
-      const dataParsed = JSON.parse('phonebook');
+    const contactsParsed = localStorage.getItem('phonebook');
+    if (contactsParsed) {
+      const dataParsed = JSON.parse(contactsParsed);
 
       return dataParsed;
     } else {
@@ -43,9 +43,12 @@ export const App = () => {
     ) {
       return alert(`${name} is already in contacts`);
     }
-    setContacts(prev => ({
-      contacts: [...prev.contacts, { name, number, id: nanoid() }],
-    }));
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    setContacts(prevContacts => [...prevContacts, newContact])
   };
 
   const filterContact = () => {
@@ -56,10 +59,8 @@ export const App = () => {
     return filttredContacts;
   };
 
-  const removeContact = id => {
-    setContacts(prev => ({
-      contacts: prev.contacts.filter(el => el.id !== id),
-    }));
+  const removeContact = e => {
+    setContacts(contacts.filter(item => e !== item.id));
   };
 
   return (
