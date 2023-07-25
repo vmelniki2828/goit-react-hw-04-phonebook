@@ -59,8 +59,8 @@ export const App = () => {
     return filttredContacts;
   };
 
-  const removeContact = e => {
-    setContacts(contacts.filter(item => e !== item.id));
+  const removeContact = (contactId) => {
+    setContacts((prevState)=>prevState.filter(i => i.id !== contactId));
   };
 
   return (
